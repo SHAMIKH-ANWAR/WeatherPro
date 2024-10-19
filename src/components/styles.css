@@ -1,0 +1,576 @@
+/* styles.css */
+.swiper-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 80%; /* 80% of the page width */
+  height: 40vh; /* 30% of the viewport height */
+  margin: 20px auto; /* Center the div with margin */
+  border-radius: 15px; /* Rounded corners */
+  overflow: hidden; /* Ensure overflow is hidden */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  background-color: #f5f5f5; /* Optional background color */
+  box-sizing: border-box;
+}
+
+.mySwiper {
+  width: 100%; /* Full width for the Swiper */
+  height: 100%; /* Full height for the Swiper */
+  box-sizing: border-box;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center; /* Center the content within the slide */
+  align-items: center; /* Center vertically */
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.swiper-slide img {
+  width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  max-width: 100%; /* Prevent overflow */
+  /* Maintain aspect ratio while filling the space */
+  border-radius: 15px;
+}
+
+.custom {
+  background: rgba(255, 255, 255, 0.1); /* White with transparency */
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Qwitcher Grypen", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  border-radius: 10px;
+  inset: 0 0 0 0;
+}
+
+.card {
+  display: grid;
+  place-items: center;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  overflow: hidden;
+  height: 400px;
+}
+
+.ff {
+  backdrop-filter: blur(10px);
+  background-color: rgba(240, 248, 255, 0.412);
+  box-shadow: 10px;
+}
+
+.weather {
+  background: rgba(225, 197, 187, 0.771);
+  backdrop-filter: blur(10px);
+  box-shadow: 3px 7px 20px 10px rgba(231, 196, 202, 0.232);
+  border-radius: 20px;
+  display: grid;
+}
+
+.cloud {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  background: #ffffff;
+  border-radius: 50px;
+  box-shadow: 20px 0 40px 0px #ffffff93;
+  z-index: 4;
+}
+
+/* Adding more puffs to make the cloud realistic */
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.cloud::before {
+  width: 80px;
+  height: 80px;
+  top: -30px;
+  left: 20px;
+}
+
+.cloud::after {
+  width: 120px;
+  height: 120px;
+  top: -40px;
+  right: 20px;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  45% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(80vw);
+    opacity: 0;
+  }
+}
+
+.cloud {
+  position: absolute;
+  top: 20%;
+  left: -200px;
+  animation: moveClouds 42s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.cloud-0 {
+  top: 10%;
+  animation-duration: 52s;
+  
+}
+
+.cloud-1 {
+  top: 35%;
+  animation-duration: 25s;
+  
+}
+
+.tt {
+  animation-duration: 35s;
+}
+
+.ff {
+  animation-duration: 27s;
+}
+
+.sun {
+  height: 200px;
+  width: 200px;
+  position: relative;
+}
+
+.sun::before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+
+  background-color: orange;
+  transform: translateY(-20px);
+  box-shadow: 0 0 35px 5px yellow, 0 0 25px 10px yellow inset;
+  z-index: 2;
+}
+
+
+
+.no-rain{
+  background:linear-gradient(rgb(50, 210, 222,0.771),rgb(237, 237, 150));
+}
+
+.active-day-rain {
+  background: linear-gradient(rgb(150, 125, 125), rgb(118, 118, 175));
+}
+
+.display {
+  display: none;
+}
+
+.moon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: gray;
+  box-shadow: 0 0 20px rgba(81, 81, 69, 0.6); /* Optional glow effect */
+  overflow: hidden;
+  transform: translateY(-70px);
+}
+
+.moon::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: 10px;
+  left: 20px;
+}
+
+.active-night {
+  background: linear-gradient(rgb(61, 61, 123), rgba(47, 41, 41, 0.414));
+}
+
+.rain {
+  height: 30px;
+  width: 5px;
+  background-color: rgba(0, 157, 255, 0.736);
+  animation: raining 0.5s linear infinite;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+@keyframes raining {
+  from {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+}
+
+.active-snowy {
+  background: linear-gradient(rgba(255, 255, 255, 0.688), rgb(255, 255, 255));
+}
+
+.partly-cloudy {
+  background: linear-gradient(gray, rgba(0, 0, 0, 0.099));
+}
+
+.rain {
+  position: absolute;
+  top: 0;
+  background: rgb(68, 139, 183);
+  width: 2px;
+  height: 10px;
+  transform-origin: bottom;
+  animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) scaleY(1);
+  }
+  70% {
+    transform: translateY(360px) scaleY(1);
+  }
+  80% {
+    transform: translateY(360px) scaleY(0.2);
+  }
+  100% {
+    transform: translateY(360px) scaleY(0.2) scaleX(15);
+  }
+}
+
+.loader {
+  width: 108px;
+  height: 60px;
+  color: #269af2;
+  --c: radial-gradient(farthest-side, currentColor 96%, #0000);
+  background: var(--c) 100% 100% /30% 60%, var(--c) 70% 0 /50% 100%,
+    var(--c) 0 100% /36% 68%, var(--c) 27% 18% /26% 40%,
+    linear-gradient(currentColor 0 0) bottom/67% 58%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.part3{
+  padding-top: 50px;
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  opacity: 0.4;
+  animation: l7 1s infinite;
+}
+@keyframes l7 {
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90%;
+  background-color: transparent;
+}
+
+@media(max-width:768px){
+  .nomobile{
+    display: none;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+@media(max-width:436px){
+  h1{
+    font-size: x-small;
+  }
+  p{
+    font-size: small;
+  }
+  .nomobile{
+    display: none;
+  }
+
+  .mm{
+    width: 60px;
+    height: 60px;
+  }
+  .cond{
+    font-size: medium;
+    flex-shrink: 0;
+    text-wrap: nowrap;
+    margin-left: 180px;
+  }
+  h2{
+    font-size: medium;
+  }
+  .mobile-temp{
+    font-size: 3.3rem;
+  }
+  .mobile-up{
+    font-size: x-small;
+  }
+  .mobile-humid{
+    font-size: large;
+  }
+  .wind{
+    font-size: large;
+    text-wrap: nowrap;
+    padding-left: 90px;
+  }
+  .mobile-size{
+    font-size: small;
+    padding-left: 30px;
+  }
+  .mob-sup{
+    font-size: x-large;
+  }
+  .part3{
+    padding-top: 50px;
+      padding-left: 10px;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  /* For mobile devices */
+  .mobile-size {
+    font-size: 1.2rem;
+  }
+
+  .mobile-temp {
+    font-size: 3rem;
+  }
+
+  .mob-sup {
+    font-size: 1rem;
+  }
+
+  .mobile-up {
+    font-size: 0.8rem;
+    margin-right: 2px;
+  }
+
+  .mobile-humid {
+    font-size: 1rem;
+  }
+
+  .cond {
+    margin-bottom: 0.5rem;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+
+
+
+
+.mm {
+  margin: 0 auto;
+}
+
+
+
+@media (max-width: 641px) {
+  .nomobile {
+    display: block;
+  }
+  .wind{
+    padding-left: 100px;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+@media (max-width:425px){
+  .wind{
+    padding-left: 100px;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+@media (max-width:376px){
+  .part3{
+    padding-top: 50px;
+  }
+  .no{
+    display: none;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+@media (max-width:320px){
+  h1{
+    font-size: small;
+  }
+  p{
+    font-size: x-small;
+  }
+  .nomobile{
+    display: none;
+  }
+
+  .mm{
+    width: 60px;
+    height: 60px;
+  }
+  .cond{
+    display: none;
+  }
+  h2{
+    font-size: medium;
+  }
+  .mobile-temp{
+    font-size: 2rem;
+  }
+  .mobile-up{
+    font-size: x-small;
+  }
+  .mobile-humid{
+    font-size: large;
+  }
+  .wind{
+    font-size: medium;
+    flex-shrink: 0;
+    padding-left: 90px;
+  }
+  .mobile-size{
+    font-size: small;
+    padding-left: 30px;
+  }
+  .mob-sup{
+    font-size: x-large;
+  }
+  .part3{
+    padding-top: 50px;
+    padding-left: 10px;
+    gap: 30px;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+
+@media (max-width:376px){
+  .cond{
+    display: none;
+  }
+  #globeViz{
+    display: none;
+  }
+  .globe-wrapper{
+    display: none;
+  }
+}
+#globeViz {
+  position: absolute;
+  top: 0;
+  right: 0; /* Align it to the right side */
+  width: 70vw; /* 50% of the viewport width */
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden; /* Prevents overflow */
+}
+
+.addcities-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.globe-wrapper {
+  position: absolute;
+  right: 0;  
+  top: 0;
+  width: 50%; 
+  height: 100%;
+  transform: translateY(-180px);
+}
+
+/* Example in index.css or fonts.css */
+@font-face {
+  font-family: 'oldenglish'; /* Define a font-family name */
+  src: url('.src/fonts/BLKCHCRY.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+.texti {
+  font-family: "Almendra", serif;
+  font-weight: 700;
+  font-style: italic;
+}

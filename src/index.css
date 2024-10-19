@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background: linear-gradient(rgb(224, 204, 154),rgb(80, 202, 210));
+background-size: cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+    width: 100%;
+}
+
+.dd{
+  font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.c1{
+  background: url(https://images.pexels.com/photos/2618694/pexels-photo-2618694.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+}
+
