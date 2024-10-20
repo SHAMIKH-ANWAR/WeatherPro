@@ -188,9 +188,9 @@ const Weather = ({ searchQuery, setloading }) => {
         ">
           <h1 className="xl:text-4xl lg:text-xl md:text-sm sm:text-xl mobile-size text-wrap pl-4 absolute top-0 left-0">
             {weatherData.location?.name} | {weatherData.location?.country}{" "}
-            {weatherData.location?.name === weatherData.location?.region
+            {/* {weatherData.location?.name === weatherData.location?.region
               ? ""
-              : "|  " + weatherData.location?.region}
+              : "|  " + weatherData.location?.region} */}
           </h1>
 
           <h1 className="xl:text-9xl relative  lg:text-7xl md:text-5xl sm:text-2xl mobile-temp">
@@ -229,7 +229,7 @@ const Weather = ({ searchQuery, setloading }) => {
             Rain ammount: {weatherData?.current?.precip_mm} mm
           </h2>
         </div>
-        <div className="part3 text-4xl z-20 w-full box-border col-span-2  text-opacity-100 text-white">
+        <div className="part3 text-4xl z-20 w-full  col-span-2 text-opacity-100 text-white">
           <Swiper
             modules={[Pagination]}
             slidesPerView={5}
