@@ -112,9 +112,9 @@ const Weather = ({ searchQuery, setloading }) => {
   }
 
   return (
-    <div className="cardss w-full h-screen bg-slate-800 text-black flex items-center justify-center relative">
+    <div className="cardss w-full min-h-screen bg-gradient-to-b from-slate-800 to-slate-900 text-black flex items-center justify-center relative overflow-x-hidden py-8">
       <div
-        className={`weather w-5/6 h-5/6 grid-rows-2 grid-cols-2 z-10 ${
+        className={`weather w-11/12 md:w-5/6 h-auto md:h-5/6 grid grid-cols-1 md:grid-cols-2 gap-6 rounded-xl backdrop-blur-md bg-white/10 p-6 z-10 ${
           weatherData?.current?.is_day === 1 ? "no-rain" : "active-night"
         } ${
           weatherData?.current?.condition?.text?.toLowerCase() ===
@@ -184,80 +184,105 @@ const Weather = ({ searchQuery, setloading }) => {
           
         </div>
 
-        <div className="part1 flex items-center mt-20 flex-col justify-center gap-1 z-20
-        ">
-          <h1 className="xl:text-4xl lg:text-xl md:text-sm sm:text-xl mobile-size text-wrap pl-4 absolute top-0 left-0">
-            {weatherData.location?.name} | {weatherData.location?.country}{" "}
-            {/* {weatherData.location?.name === weatherData.location?.region
-              ? ""
-              : "|  " + weatherData.location?.region} */}
+        <div className="part1 flex items-center mt-4 md:mt-20 flex-col justify-center gap-3 z-20">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white text-center px-4 w-full">
+            {weatherData.location?.name} | {weatherData.location?.country}
           </h1>
 
-          <h1 className="xl:text-9xl relative  lg:text-7xl md:text-5xl sm:text-2xl mobile-temp">
-            {weatherData.current?.temp_c}{" "}
-            <sup className="align-super text-4xl
-            xl:text-2xl lg:text-xl md:text-sm sm:text-xs mob-sup">o</sup>C
+          <h1 className="text-6xl md:text-7xl lg:text-9xl font-bold text-white mt-4">
+            {weatherData.current?.temp_c}
+            <sup className="text-xl md:text-2xl lg:text-4xl">°C</sup>
           </h1>
-          <h2 className="text-xl mt-4 relative
-          xl:text-2xl lg:text-xl md:text-sm sm:text-xs">
-            Feels Like {weatherData.current?.feelslike_c}
-            <sup>o</sup>C
-          </h2>
-          <h3 className="text-xl text-gray-200 relative xl:text-2xl lg:text-xl md:text-sm sm:text-xs">
-            Pressure: {weatherData.current?.pressure_in}
-          </h3>
-          <h2 className="text-2xl text-white relative xl:text-2xl lg:text-xl md:text-sm sm:text-xs ml-4 wind">
-            Wind Speed in kph: {weatherData.current?.wind_kph}  mph:{""}
-            {weatherData.current?.wind_mph}
-          </h2>
-          <h1 className="text-2xl xl:text-2xl lg:text-xl md:text-sm sm:text-xs cond mb-4">
-            Condition: {weatherData?.current?.condition?.text}
-          </h1>
+          
+          <div className="flex flex-col items-center gap-2 text-white/90">
+            <h2 className="text-lg md:text-xl lg:text-2xl">
+              Feels Like {weatherData.current?.feelslike_c}°C
+            </h2>
+            <h3 className="text-base md:text-lg lg:text-xl">
+              Pressure: {weatherData.current?.pressure_in} inHg
+            </h3>
+            <h2 className="text-base md:text-lg lg:text-xl text-center">
+              Wind Speed: {weatherData.current?.wind_kph} kph | {weatherData.current?.wind_mph} mph
+            </h2>
+            <div className="flex items-center gap-2 mt-2">
+              <img 
+                src={weatherData?.current?.condition?.icon}
+                alt={weatherData?.current?.condition?.text}
+                className="w-10 h-10"
+              />
+              <h1 className="text-lg md:text-xl">
+                {weatherData?.current?.condition?.text}
+              </h1>
+            </div>
+          </div>
         </div>
 
-        <div className="part2 flex items-center justify-center flex-col gap-7 relative z-20 text-black">
-          <h1 className="absolute top-0 right-0 mr-5 text-xl mt-2 xl:text-2xl lg:text-xl md:text-sm sm:text-xs mobile-up">
+        <div className="part2 flex items-center justify-center flex-col gap-4 relative z-20 text-white">
+          <h1 className="text-sm md:text-base lg:text-lg text-white/80 text-center px-4">
             Last Updated - {weatherData?.current?.last_updated}
           </h1>
-          <h1 className="text-4xl xl:text-2xl lg:text-xl md:text-2xl sm:text-xs mobile-humid">
-            Humidity: {weatherData?.current?.humidity}%
-          </h1>
-          {/* <h1 className="text-2xl xl:text-2xl lg:text-xl md:text-xl sm:text-xs">
-            Wind Speed: {weatherData?.current?.wind_kph} km/h
-          </h1> */}
-          <h2 className="2xl xl:text-2xl lg:text-2xl md:text-xl sm:text-xs no">
-            Rain ammount: {weatherData?.current?.precip_mm} mm
-          </h2>
+          
+          <div className="grid grid-cols-2 gap-6 mt-4">
+            <div className="stat-card bg-white/20 p-4 rounded-lg backdrop-blur-sm">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-medium">
+                Humidity
+              </h1>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">
+                {weatherData?.current?.humidity}%
+              </p>
+            </div>
+            
+            <div className="stat-card bg-white/20 p-4 rounded-lg backdrop-blur-sm">
+              <h1 className="text-lg md:text-xl lg:text-2xl font-medium">
+                Precipitation
+              </h1>
+              <p className="text-2xl md:text-3xl lg:text-4xl font-bold mt-2">
+                {weatherData?.current?.precip_mm} mm
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="part3 text-4xl z-20 w-full  col-span-2 text-opacity-100 text-white">
+
+        <div className="part3 col-span-1 md:col-span-2 z-20 w-full text-white mt-6">
           <Swiper
             modules={[Pagination]}
-            slidesPerView={5}
-            spaceBetween={1}
+            slidesPerView={2}
+            breakpoints={{
+              640: {
+                slidesPerView: 3,
+              },
+              768: {
+                slidesPerView: 4,
+              },
+              1024: {
+                slidesPerView: 5,
+              },
+            }}
+            spaceBetween={16}
             grabCursor={true}
+            pagination={{ clickable: true }}
             className="mySwiper z-50"
           >
             {forecastData?.list?.slice(0, 8).map((item, index) => {
-            const iconCode = item.weather[0].icon;
-            return (
-              <SwiperSlide key={index}>
-                <div className="parts">
-                  <div className="xl:h-24 xl:w-24 flex justify-center items-center lg:h-20 w-20 md:h-14 md:w-14 sm:h-10 sm:w-10 mm">
-                    <img
-                      className="w-full h-full"
-                      src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`}
-                      alt="weather icon"
-                    />
+              const iconCode = item.weather[0].icon;
+              const time = new Date(item.dt * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+              return (
+                <SwiperSlide key={index}>
+                  <div className="forecast-card bg-white/20 rounded-lg p-4 backdrop-blur-sm">
+                    <p className="text-sm mb-2">{time}</p>
+                    <div className="flex justify-center">
+                      <img
+                        className="w-16 h-16"
+                        src={`http://openweathermap.org/img/wn/${iconCode}@2x.png`}
+                        alt="weather icon"
+                      />
+                    </div>
+                    <p className="text-lg font-bold mt-2">{Math.round(item.main.temp)}°C</p>
+                    <p className="text-sm">{item.weather[0].description}</p>
                   </div>
-                  <h1 className="xl:text-4xl lg:text-2xl md:text-xl sm:text-md">{new Date(item.dt * 1000).toLocaleTimeString()}</h1>
-                  <p className="xl:text-4xl lg:text-sm md:text-sm sm:text-sm">{item.main.temp}°C</p>
-                  <h1 className=" xl:2xl lg:xl md:text-xl sm:text-md nomobile">
-                    Will Feel like:{item.main.feels_like}°C
-                  </h1>
-                </div>
-              </SwiperSlide>
-            );
-          })}
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
       </div>
